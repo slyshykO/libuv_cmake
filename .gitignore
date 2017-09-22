@@ -1,0 +1,17 @@
+*.user*
+*.o
+*.hex
+*.bin
+*.elf
+*.d
+*.lst
+*.lss
+*.map
+*.obj
+*.a
+*.lib
+*CMakeFiles*
+*.cmake
+*.cbp
+CMakeCache.txt
+*ninja*
