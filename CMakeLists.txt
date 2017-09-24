@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.4)
 
-project(libuv_cmake)
+project(libuv_cmake LANGUAGES C)
 
-set(BASE ${CMAKE_SOURCE_DIR}/libuv)
+set(BASE ${CMAKE_CURRENT_SOURCE_DIR}/libuv)
+
+message(STATUS "BASE =  ${BASE}")
 
 set(SHARED "STATIC")
 
