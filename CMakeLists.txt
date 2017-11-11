@@ -24,7 +24,7 @@ set(SOURCES
     ${BASE}/src/version.c)
 
 if(WIN32)
-  set(DEFINES ${DEFINES} _GNU_SOURCE _WIN32_WINNT=0x0501 _CRT_SECURE_NO_WARNINGS)
+  set(DEFINES ${DEFINES} _GNU_SOURCE _WIN32_WINNT=0x0600 _CRT_SECURE_NO_WARNINGS)
   set(LIBS ${LIBS} advapi32 iphlpapi psapi shell32 user32 userenv ws2_32)
   set(SOURCES ${SOURCES}
       ${BASE}/include/uv-win.h
