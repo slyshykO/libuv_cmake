@@ -21,6 +21,7 @@ set(SOURCES
     ${BASE}/src/threadpool.c
     ${BASE}/src/uv-common.c
     ${BASE}/src/uv-common.h
+    ${BASE}/src/uv-data-getter-setters.c
     ${BASE}/src/version.c)
 
 if(win32)
@@ -214,3 +215,12 @@ endif()
 if(mac)
   target_compile_definitions(uv PUBLIC _DARWIN_USE_64_BIT_INODE=1)
 endif()
+
+
+option(BUILD_TESTS "Build test programs" OFF)
+
+if(BUILD_TESTS)
+    add_subdirectory(test)
+endif()
+
+
