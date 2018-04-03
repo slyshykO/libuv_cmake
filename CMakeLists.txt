@@ -2,9 +2,16 @@ cmake_minimum_required(VERSION 3.4)
 
 project(libuv_cmake LANGUAGES C)
 
+option(BUILD_TESTS "Build test programs" OFF)
+option(LIBUV_STATIC "Build uv as static" ON)
+
 set(BASE ${CMAKE_CURRENT_SOURCE_DIR}/libuv)
 
-set(SHARED "STATIC")
+if(LIBUV_STATIC)
+    set(SHARED "STATIC")
+else()
+    set(SHARED "SHARED")
+endif()
 
 include(./common.cmake)
 
@@ -198,6 +205,10 @@ if(sunos)
       ${BASE}/src/unix/sunos.c)
 endif()
 
+if(NOT LIBUV_STATIC)
+    list(APPEND DEFINES BUILDING_UV_SHARED)
+endif()
+
 add_library(uv ${SHARED} ${SOURCES})
 target_compile_definitions(uv PRIVATE ${DEFINES})
 target_include_directories(uv PRIVATE ${BASE}/src)
@@ -215,9 +226,6 @@ endif()
 if(mac)
   target_compile_definitions(uv PUBLIC _DARWIN_USE_64_BIT_INODE=1)
 endif()
-
-
-option(BUILD_TESTS "Build test programs" OFF)
 
 if(BUILD_TESTS)
     add_subdirectory(test)
