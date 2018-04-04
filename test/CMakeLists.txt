@@ -164,3 +164,7 @@ add_executable(run-tests ${UV_TEST_SOURCES})
 target_link_libraries(run-tests ${UV_TEST_LIBS})
 target_include_directories(run-tests PUBLIC ${BASE}/include)
 
+if( NOT LIBUV_STATIC)
+    target_compile_definitions(run-tests  PRIVATE USING_UV_SHARED )
+endif()
+
